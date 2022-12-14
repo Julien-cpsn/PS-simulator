@@ -6,6 +6,7 @@ import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
+// https://kotlinlang.org/docs/command-line.html
 fun Route.taskRouting() {
     route("task") {
         route("/database") {

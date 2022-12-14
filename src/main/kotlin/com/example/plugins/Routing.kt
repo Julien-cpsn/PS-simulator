@@ -9,6 +9,7 @@ fun Application.configureRouting() {
     routing {
         route("/api") {
             firestationRouting()
+            taskRouting()
         }
     }
 }

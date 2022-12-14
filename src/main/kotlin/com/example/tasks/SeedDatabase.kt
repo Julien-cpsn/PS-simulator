@@ -1,0 +1,19 @@
+package com.example.tasks
+
+import com.example.dao.*
+import com.example.utils.database.DatabaseFactory.query
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
+object SeedDatabase {
+    fun run() = runBlocking {
+        launch {
+            seed()
+        }
+    }
+
+    private suspend fun seed() = query {
+        FirestationDao.addFirestation("Caserne Lyon-Confluence", arrayOf(45.7468368,4.825788))
+        FirestationDao.addFirestation("Caserne Villeurbanne", arrayOf(45.7790285, 4.878109))
+    }
+}

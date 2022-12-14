@@ -18,5 +18,8 @@ object SeedDatabase {
 
         FiretruckDao.addFiretruck(1, arrayOf(45.7468368,4.825788))
         FiretruckDao.addFiretruck(2, arrayOf(45.7790285, 4.878109))
+
+        FiremanDao.addFireman(1, 1, "Roger", "VITESSE")
+        FiremanDao.addFireman(2, 2, "Alexis", "THOMAS")
     }
 }

@@ -11,6 +11,7 @@ fun Application.configureRouting() {
             taskRouting()
             firestationRouting()
             firetruckRouting()
+            firemanRouting()
         }
     }
 }

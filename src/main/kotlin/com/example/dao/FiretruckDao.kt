@@ -1,6 +1,5 @@
 package com.example.dao
 
-import com.example.tables.Firestations
 import com.example.tables.Firetruck
 import com.example.tables.Firetrucks
 import com.example.utils.database.DatabaseFactory.query

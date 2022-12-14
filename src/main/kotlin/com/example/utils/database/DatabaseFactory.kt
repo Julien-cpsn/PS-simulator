@@ -1,5 +1,6 @@
 package com.example.utils.database
 
+import com.example.tables.Firemans
 import com.example.tables.Firestations
 import com.example.tables.Firetrucks
 import io.ktor.server.config.*
@@ -28,6 +29,7 @@ object DatabaseFactory {
     }
 
     fun dropTables() {
+        SchemaUtils.drop(Firemans)
         SchemaUtils.drop(Firetrucks)
         SchemaUtils.drop(Firestations)
     }
@@ -35,6 +37,7 @@ object DatabaseFactory {
     fun createTables() {
         SchemaUtils.create(Firestations)
         SchemaUtils.create(Firetrucks)
+        SchemaUtils.create(Firemans)
     }
 
     suspend fun <T> query(block: suspend () -> T): T =

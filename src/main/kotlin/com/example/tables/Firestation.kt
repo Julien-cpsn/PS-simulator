@@ -14,7 +14,7 @@ data class Firestation(
 
 object Firestations: Table(){
     val id = integer("id").autoIncrement()
-    val name = varchar("username", 128).uniqueIndex()
+    val name = varchar("name", 128).uniqueIndex()
     val coords = point("coords")
 
     override val primaryKey = PrimaryKey(id)

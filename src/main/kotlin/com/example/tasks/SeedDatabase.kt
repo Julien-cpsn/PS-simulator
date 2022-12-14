@@ -15,5 +15,8 @@ object SeedDatabase {
     private suspend fun seed() = query {
         FirestationDao.addFirestation("Caserne Lyon-Confluence", arrayOf(45.7468368,4.825788))
         FirestationDao.addFirestation("Caserne Villeurbanne", arrayOf(45.7790285, 4.878109))
+
+        FiretruckDao.addFiretruck(1, arrayOf(45.7468368,4.825788))
+        FiretruckDao.addFiretruck(2, arrayOf(45.7790285, 4.878109))
     }
 }

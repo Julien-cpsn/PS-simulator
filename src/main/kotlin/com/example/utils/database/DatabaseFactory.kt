@@ -1,6 +1,7 @@
 package com.example.utils.database
 
 import com.example.tables.Firestations
+import com.example.tables.Firetrucks
 import io.ktor.server.config.*
 import kotlinx.coroutines.*
 import org.jetbrains.exposed.sql.*
@@ -22,9 +23,18 @@ object DatabaseFactory {
         )
 
         transaction(database) {
-            SchemaUtils.create(Firestations)
-            //SchemaUtils.create(Users)
+            createTables()
         }
+    }
+
+    fun dropTables() {
+        SchemaUtils.drop(Firetrucks)
+        SchemaUtils.drop(Firestations)
+    }
+
+    fun createTables() {
+        SchemaUtils.create(Firestations)
+        SchemaUtils.create(Firetrucks)
     }
 
     suspend fun <T> query(block: suspend () -> T): T =

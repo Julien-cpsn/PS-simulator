@@ -6,15 +6,15 @@ import org.jetbrains.exposed.sql.Table
 
 
 @Serializable
-data class Firestation(
+data class Firetruck(
     val id: Int? = 0,
-    val name: String,
+    val firestation_id: Int,
     val coords: Array<Double>
 )
 
-object Firestations: Table(){
+object Firetrucks: Table(){
     val id = integer("id").autoIncrement()
-    val name = varchar("username", 128).uniqueIndex()
+    val firestation_id = reference("firestation_id", Firestations.id)
     val coords = point("coords")
 
     override val primaryKey = PrimaryKey(id)

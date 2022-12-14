@@ -8,8 +8,9 @@ import io.ktor.server.routing.*
 fun Application.configureRouting() {
     routing {
         route("/api") {
-            firestationRouting()
             taskRouting()
+            firestationRouting()
+            firetruckRouting()
         }
     }
 }

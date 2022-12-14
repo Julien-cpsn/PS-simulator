@@ -1,6 +1,7 @@
 package com.example.tasks
 
 import com.example.tables.*
+import com.example.utils.database.DatabaseFactory
 import com.example.utils.database.DatabaseFactory.query
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -14,8 +15,7 @@ object FreshDatabase {
   }
 
     private suspend fun fresh() = query {
-        SchemaUtils.drop(Firestations)
-
-        SchemaUtils.create(Firestations)
+        DatabaseFactory.dropTables()
+        DatabaseFactory.createTables()
     }
 }

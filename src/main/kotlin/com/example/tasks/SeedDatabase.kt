@@ -21,5 +21,12 @@ object SeedDatabase {
 
         FiremanDao.addFireman(1, 1, "Roger", "VITESSE")
         FiremanDao.addFireman(2, 2, "Alexis", "THOMAS")
+
+        SkillDao.addSkill("CMIC")
+        SkillDao.addSkill("GRIMP")
+
+        FiremanSkillDao.addFiremanSkill(1, 1)
+        FiremanSkillDao.addFiremanSkill(2, 1)
+        FiremanSkillDao.addFiremanSkill(2, 2)
     }
 }

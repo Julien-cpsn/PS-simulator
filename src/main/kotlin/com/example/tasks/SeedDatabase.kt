@@ -4,6 +4,7 @@ import com.example.dao.*
 import com.example.utils.database.DatabaseFactory.query
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.time.LocalDateTime
 
 object SeedDatabase {
     fun run() = runBlocking {
@@ -28,5 +29,8 @@ object SeedDatabase {
         FiremanSkillDao.addFiremanSkill(1, 1)
         FiremanSkillDao.addFiremanSkill(2, 1)
         FiremanSkillDao.addFiremanSkill(2, 2)
+
+        MissionDao.addMission(LocalDateTime.of(2023, 1, 3, 11, 33))
+        MissionDao.addMission(LocalDateTime.of(2023, 1, 5, 18, 0), LocalDateTime.of(2023, 1, 7, 6, 30), "Mission test")
     }
 }

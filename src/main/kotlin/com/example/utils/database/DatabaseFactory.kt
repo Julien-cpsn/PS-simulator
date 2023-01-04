@@ -27,6 +27,7 @@ object DatabaseFactory {
     }
 
     fun dropTables() {
+        SchemaUtils.drop(Missions)
         SchemaUtils.drop(FiremansSkills)
         SchemaUtils.drop(Skills)
         SchemaUtils.drop(Firemans)
@@ -40,6 +41,7 @@ object DatabaseFactory {
         SchemaUtils.create(Firemans)
         SchemaUtils.create(Skills)
         SchemaUtils.create(FiremansSkills)
+        SchemaUtils.create(Missions)
     }
 
     suspend fun <T> query(block: suspend () -> T): T =

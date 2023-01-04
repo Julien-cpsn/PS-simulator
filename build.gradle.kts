@@ -39,4 +39,6 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposed_version")
     implementation("com.impossibl.pgjdbc-ng:pgjdbc-ng:0.8.9")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 }

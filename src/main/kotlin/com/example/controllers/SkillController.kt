@@ -1,7 +1,7 @@
 package com.example.controllers
 
-import com.example.dao.FiremanSkillDao
-import com.example.tables.FiremanSkill
+import com.example.dao.SkillDao
+import com.example.tables.Skill
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
@@ -9,49 +9,49 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.util.*
 
-fun Route.firemanSkillRouting() {
-    route("/fireman-skill") {
+fun Route.skillRouting() {
+    route("/skill") {
         post {
-            val params = call.receive<FiremanSkill>()
-            call.respond(FiremanSkillDao.addFiremanSkill(params.fireman_id, params.skill_id))
+            val params = call.receive<Skill>()
+            call.respond(SkillDao.addSkill(params.name))
         }
 
         get {
-            call.respond(FiremanSkillDao.getAllFiremansSkills())
+            call.respond(SkillDao.getAllSkills())
         }
 
         get("/{id}") {
             val id = call.parameters.getOrFail<Int>("id").toInt()
-            val firemanSkill = FiremanSkillDao.getFiremanSkill(id)
+            val skill = SkillDao.getSkill(id)
 
-            if (firemanSkill == null) {
-                call.respondText("FIREMAN SKILL NOT FOUND", status = HttpStatusCode.NotFound)
+            if (skill == null) {
+                call.respondText("SKILL NOT FOUND", status = HttpStatusCode.NotFound)
             }
             else {
-                call.respond(firemanSkill)
+                call.respond(skill)
             }
         }
 
         post("/{id}/update") {
-            val params = call.receive<FiremanSkill>()
+            val params = call.receive<Skill>()
             val id = call.parameters.getOrFail<Int>("id").toInt()
 
-            if (!FiremanSkillDao.firemanSkillExists(id)) {
-                call.respondText("FIREMAN SKILL NOT FOUND", status = HttpStatusCode.NotFound)
+            if (!SkillDao.skillExists(id)) {
+                call.respondText("SKILL NOT FOUND", status = HttpStatusCode.NotFound)
             }
             else {
-                call.respond(FiremanSkillDao.updateFiremanSkill(id, params.fireman_id, params.skill_id))
+                call.respond(SkillDao.updateSkill(id, params.name))
             }
         }
 
         get("/{id}/delete") {
             val id = call.parameters.getOrFail<Int>("id").toInt()
 
-            if (!FiremanSkillDao.firemanSkillExists(id)) {
-                call.respondText("FIREMAN SKILL NOT FOUND", status = HttpStatusCode.NotFound)
+            if (!SkillDao.skillExists(id)) {
+                call.respondText("SKILL NOT FOUND", status = HttpStatusCode.NotFound)
             }
             else {
-                call.respond(FiremanSkillDao.deleteFiremanSkill(id))
+                call.respond(SkillDao.deleteSkill(id))
             }
         }
     }

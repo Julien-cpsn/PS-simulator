@@ -15,6 +15,7 @@ fun Application.configureRouting() {
             skillRouting()
             firemanSkillRouting()
             missionRouting()
+            fireRouting()
         }
     }
 }

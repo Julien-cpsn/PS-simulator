@@ -7,16 +7,27 @@ Projet Scientifique du S7 de la formation IRC de l'école d'ingénieurs CPE Lyon
 
 ### Production
 
-Build
+Build image
 ```
-gradle build
+./gradlew buildImage
+```
+
+Load image
+```
+docker load < build/jib-image.tar
+docker run backend-docker-image
+```
+
+Build & Run image directly
+```
+./gradlew runDocker
 ```
 
 ### Developpement
 
 Hot Reload
 ```
-.\gradlew -t build
+./gradlew -t build
 ```
 
 Run

@@ -48,7 +48,7 @@ object MissionDao {
         Missions.deleteWhere { Missions.id eq id } > 0
     }
 
-    suspend fun missionsExists(id: Int): Boolean = query {
+    suspend fun missionExists(id: Int): Boolean = query {
         Missions.select { Missions.id eq id }.count() > 0
     }
 }

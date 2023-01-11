@@ -11,14 +11,16 @@ object FireDao {
     private fun rowToFire(row: ResultRow) = Fire (
         id = row[Fires.id],
         mission_id = row[Fires.mission_id],
+        skill_id = row[Fires.skill_id],
         frequency = row[Fires.frequency],
         intensity = row[Fires.intensity],
         coords = row[Fires.coords]
     )
 
-    suspend fun addFire(missionId: Int, frequency: Float, intensity: Int, coords: Array<Double>): Fire = query {
+    suspend fun addFire(missionId: Int, skillId: Int, frequency: Float, intensity: Int, coords: Array<Double>): Fire = query {
         val insertStatement = Fires.insert {
             it[Fires.mission_id] = missionId
+            it[Fires.skill_id] = skillId
             it[Fires.frequency] = frequency
             it[Fires.intensity] = intensity
             it[Fires.coords] = coords
@@ -37,9 +39,10 @@ object FireDao {
         Fires.selectAll().map(::rowToFire)
     }
 
-    suspend fun updateFire(id: Int, missionId: Int, frequency: Float, intensity: Int, coords: Array<Double>): Boolean = query {
+    suspend fun updateFire(id: Int, missionId: Int, skillId: Int, frequency: Float, intensity: Int, coords: Array<Double>): Boolean = query {
         Fires.update({ Fires.id eq id }) {
             it[Fires.mission_id] = missionId
+            it[Fires.skill_id] = skillId
             it[Fires.frequency] = frequency
             it[Fires.intensity] = intensity
             it[Fires.coords] = coords

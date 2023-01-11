@@ -16,6 +16,7 @@ fun Application.configureRouting() {
             firemanSkillRouting()
             missionRouting()
             fireRouting()
+            intervenesRouting()
         }
     }
 }

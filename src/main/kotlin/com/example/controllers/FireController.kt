@@ -13,7 +13,7 @@ fun Route.fireRouting() {
     route("/fire") {
         post {
             val params = call.receive<Fire>()
-            call.respond(FireDao.addFire(params.mission_id, params.frequency, params.intensity, params.coords))
+            call.respond(FireDao.addFire(params.mission_id, params.skill_id, params.frequency, params.intensity, params.coords))
         }
 
         get {
@@ -40,7 +40,7 @@ fun Route.fireRouting() {
                 call.respondText("FIRE NOT FOUND", status = HttpStatusCode.NotFound)
             }
             else {
-                call.respond(FireDao.updateFire(id, params.mission_id, params.frequency, params.intensity, params.coords))
+                call.respond(FireDao.updateFire(id, params.mission_id, params.skill_id, params.frequency, params.intensity, params.coords))
             }
         }
 

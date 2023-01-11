@@ -37,7 +37,7 @@ fun Route.missionRouting() {
             val params = call.receive<Mission>()
             val id = call.parameters.getOrFail<Int>("id").toInt()
 
-            if (!MissionDao.missionsExists(id)) {
+            if (!MissionDao.missionExists(id)) {
                 call.respondText("MISSION NOT FOUND", status = HttpStatusCode.NotFound)
             }
             else {
@@ -48,7 +48,7 @@ fun Route.missionRouting() {
         get("/{id}/delete") {
             val id = call.parameters.getOrFail<Int>("id").toInt()
 
-            if (!MissionDao.missionsExists(id)) {
+            if (!MissionDao.missionExists(id)) {
                 call.respondText("MISSION NOT FOUND", status = HttpStatusCode.NotFound)
             }
             else {

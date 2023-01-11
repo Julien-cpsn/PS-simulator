@@ -5,6 +5,7 @@ import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import kotlinx.coroutines.launch
 
 // https://kotlinlang.org/docs/command-line.html
 fun Route.taskRouting() {
@@ -22,6 +23,18 @@ fun Route.taskRouting() {
             get("/seed") {
                 SeedDatabase.run()
                 call.respondText("Seeding database...", status = HttpStatusCode.OK)
+            }
+        }
+
+        route("/simulator") {
+            get("/start") {
+                Simulator.run()
+                call.respondText("Simulator is running...")
+            }
+
+            get("/stop") {
+                Simulator.stop()
+                call.respondText("Simulator is stopping...")
             }
         }
     }

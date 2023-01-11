@@ -9,6 +9,7 @@ import org.jetbrains.exposed.sql.Table
 data class Fire(
     val id: Int? = 0,
     val mission_id: Int,
+    val skill_id: Int,
     val frequency: Float,
     val intensity: Int,
     val coords: Array<Double>
@@ -17,6 +18,7 @@ data class Fire(
 object Fires: Table(){
     val id = integer("id").autoIncrement()
     val mission_id = reference("mission_id", Missions.id)
+    val skill_id = reference("skill_id", Skills.id)
     val frequency = float("frequency")
     val intensity = integer("intensity")
     val coords = point("coords")

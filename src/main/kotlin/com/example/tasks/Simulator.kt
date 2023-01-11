@@ -32,7 +32,7 @@ object Simulator{
                 val missionForFire: Mission? = MissionDao.getMission(fire.mission_id)
                 if (missionForFire != null && missionForFire.end == null && fire.id != null) {
                     FireDao.updateFire(fire.id, fire.mission_id, fire.skill_id, fire.frequency, fire.intensity + 1, fire.coords)
-                    println("Fire at coords ${fire.coords[0]},${fire.coords[1]} has not been stopped yet so its itensity increased to ${fire.intensity}")
+                    println("Fire at coords ${fire.coords[0]},${fire.coords[1]} has not been stopped yet so its itensity increased to ${fire.intensity + 1}")
                 }
             }
 
@@ -48,7 +48,7 @@ object Simulator{
             println("Generated a fire of intensity $fireIntensity at coords $fireLongCoords, $fireLatCoords")
 
             val delayBeforeNextFire = Random.nextLong(5, 10)
-            println("Waiting $delayBeforeNextFire minutes...")
+            println("Waiting $delayBeforeNextFire seconds...")
             delay(delayBeforeNextFire * 10000)
         }
     }

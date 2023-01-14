@@ -37,5 +37,17 @@ fun Route.taskRouting() {
                 call.respondText("Simulator is stopping...")
             }
         }
+
+        route("/emergency-manager") {
+            get("/start") {
+                EmergencyManager.run()
+                call.respondText("Emergency manager is running...")
+            }
+
+            get("/stop") {
+                EmergencyManager.stop()
+                call.respondText("Emergency manager is stopping...")
+            }
+        }
     }
 }

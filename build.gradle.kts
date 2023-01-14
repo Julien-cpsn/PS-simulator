@@ -21,6 +21,9 @@ application {
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://jitpack.io")
+    }
 }
 
 dependencies {
@@ -41,11 +44,17 @@ dependencies {
     implementation("com.impossibl.pgjdbc-ng:pgjdbc-ng:0.8.9")
 
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+
+    implementation("com.github.traxterz:ktor-plugin-mqtt:v1.1.0") {
+        version {
+            branch = "main"
+        }
+    }
 }
 
 ktor {
     docker {
         jreVersion.set(io.ktor.plugin.features.JreVersion.JRE_17)
-        localImageName.set("backend-docker-image")
+        localImageName.set("backend-docker-image-2")
     }
 }
